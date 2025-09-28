@@ -1,0 +1,4 @@
+﻿pandapower
+numba 
+aiomqtt
+pandas
