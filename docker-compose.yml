@@ -8,7 +8,7 @@ services:
       - "18083:18083"
     environment:
       - EMQX_DASHBOARD__DEFAULT_USERNAME=admin
-      - EMQX_DASHBOARD__DEFAULT_PASSWORD=emqxpassword
+      - EMQX_DASHBOARD__DEFAULT_PASSWORD=password
       - EMQX_AUTH__USER__1__USERNAME=mqttuser
       - EMQX_AUTH__USER__1__PASSWORD=mqttpassword
     networks:
@@ -30,7 +30,7 @@ services:
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=admin
-      - DOCKER_INFLUXDB_INIT_PASSWORD=adminpassword  # Changed from "admin" to "adminpassword" (12 characters)
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password 
       - DOCKER_INFLUXDB_INIT_ORG=my_iot_org
       - DOCKER_INFLUXDB_INIT_BUCKET=iot_bucket
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my_super_secret_token
@@ -66,7 +66,7 @@ services:
       - grafana_data:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=grafanapassword
+      - GF_SECURITY_ADMIN_PASSWORD=password
       - GF_SECURITY_ADMIN_EMAIL=admin@localhost
       - GF_USERS_ALLOW_SIGN_UP=false
     depends_on:
