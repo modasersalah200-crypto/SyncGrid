@@ -2,11 +2,11 @@
 
 A real-time IoT monitoring pipeline for power grid simulation and visualization
 
-<img width="1854" height="960" alt="Image" src="https://github.com/user-attachments/assets/8ebce91d-18a3-4e45-93dd-bed50e57feeb" />
-
 ## 📋 Overview
 
 SyncGrid is a complete, real-time IoT monitoring pipeline designed to simulate and visualize power grid data. This project demonstrates the integration of modern IoT technologies to create a scalable, portable monitoring system for power grid health analysis.
+
+<img width="1854" height="960" alt="Image" src="https://github.com/user-attachments/assets/8ebce91d-18a3-4e45-93dd-bed50e57feeb" />
 
 ## 🎯 Objectives & Goals
 
