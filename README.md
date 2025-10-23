@@ -170,9 +170,9 @@ Default Bucket: iot_bucket
    - Click Import
 
 3. **Activate Dashboard**
-   - Hover over the dashboard and from the 3points select edit
    - click Refresh On the upper-right side or select Auto
    - The dashboard should now be active and displaying live data
+   - Hover over the dashboard and from the 3points select edit to make some changes
 
 ## 📊 Features
 
