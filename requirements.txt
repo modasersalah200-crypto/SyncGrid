@@ -1,4 +1,5 @@
 ﻿pandapower
+lxml
 numba 
 aiomqtt
 pandas
