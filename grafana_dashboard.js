@@ -34,7 +34,6 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -47,26 +46,33 @@
             "mode": "palette-classic"
           },
           "custom": {
+           "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
+            "fillOpacity": 25,
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "insertNulls": false,
+            "lineInterpolation": "stepBefore",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -78,21 +84,73 @@
           },
           "mappings": [],
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
+                "value": 0
               }
             ]
           },
           "unit": "pvu"
         },
-        "overrides": []
+                "overrides": [
+
+          {
+
+            "__systemRef": "hideSeriesFrom",
+
+            "matcher": {
+
+              "id": "byNames",
+
+              "options": {
+
+                "mode": "exclude",
+
+                "names": [
+
+                  "Bus 50",
+
+                  "Bus 169",
+
+                  "Bus 19",
+
+                  "Bus 52"
+
+                ],
+
+                "prefix": "All except:",
+
+                "readOnly": true
+
+              }
+
+            },
+
+            "properties": [
+
+              {
+
+                "id": "custom.hideFrom",
+
+                "value": {
+
+                  "legend": false,
+
+                  "tooltip": true,
+
+                  "viz": true
+
+                }
+
+              }
+
+            ]
+
+          }
+
+        ]
       },
       "gridPos": {
         "h": 9,
@@ -109,17 +167,19 @@
           "showLegend": true
         },
         "tooltip": {
+        "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
+      "pluginVersion": "12.2.0",
       "targets": [
         {
           "datasource": {
             "type": "influxdb",
             "uid": null
           },
-          "query": "from(bucket: \"iot_bucket\")\n  |> range(v: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\n  |> filter(fn: (r) => r[\"_field\"] == \"vm_pu\")\n  |> group(columns: [\"name\"])\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"iot_bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\n  |> filter(fn: (r) => r[\"_field\"] == \"vm_pu\")\n  |> group(columns: [\"name\"])\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
           "refId": "A"
         }
       ],
@@ -127,20 +187,20 @@
       "type": "timeseries"
     }
   ],
-  "schemaVersion": 37,
-  "style": "dark",
+    "preload": false,
+  "refresh": "",
+  "schemaVersion": 42,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Power Grid Monitoring",
   "uid": null,
-  "version": 1,
-  "weekStart": ""
+  "version": 1
 }
